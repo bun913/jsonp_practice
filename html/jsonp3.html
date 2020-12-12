@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>データを受け取って、画面に反映する</title>
+  </head>
+  <body>
+    <h1>ここの下に読み込んだデータを表示する</h1>
+    <p>
+        作った人: <span id="author"></span>
+    </p>
+    <p>
+        メッセージ: <span id="message"></span>
+    </p>
+  </body>
+</html>
+
+<script>
+  function appendScriptTag(src) {
+    let script = document.createElement('script');
+    script.src = src;
+    document.body.appendChild(script);
+  }
+  const callBack = function (data) {
+    const message = data.message;
+    const author = data.author;
+    document.getElementById('message').innerText = message;
+    document.getElementById('author').innerText = author;
+  };
+
+  appendScriptTag('http://localhost:8080/js/jsonp3.js');
+</script>
